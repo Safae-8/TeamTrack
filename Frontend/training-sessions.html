@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Sessions | TeamTrack</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="training-sessions">
+    <div class="app">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <div id="topbar-container"></div>
+
+            <section class="page-header">
+                <div>
+                    <h1>Training Sessions</h1>
+                    <p>Schedule and manage your team's training sessions.</p>
+                </div>
+
+                <button type="button" class="primary-button" id="openTrainingModal">
+                    + Schedule Training
+                </button>
+            </section>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <span>Total Sessions</span>
+                    <strong id="totalSessions">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>This Month</span>
+                    <strong id="monthlySessions">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>Upcoming</span>
+                    <strong id="upcomingSessions">0</strong>
+                </div>
+            </section>
+
+            <section class="content-card training-sessions-card">
+                <div class="section-header">
+                    <div>
+                        <h2>All Training Sessions</h2>
+                        <p>Sessions are saved permanently in the database.</p>
+                    </div>
+                    <input type="month" id="trainingMonthFilter" aria-label="Filter by month">
+                </div>
+
+                <div class="table-container">
+                    <table class="players-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Location</th>
+                                <th>Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trainingSessionsBody">
+                            <tr>
+                                <td colspan="5" class="table-loading">Loading training sessions...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="trainingModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h2 id="trainingModalTitle">Schedule Training</h2>
+                    <p>Enter the training session details.</p>
+                </div>
+                <button type="button" class="modal-close" id="closeTrainingModal" aria-label="Close">&times;</button>
+            </div>
+
+            <form id="trainingForm">
+                <div class="form-group">
+                    <label for="trainingDate">Training Date *</label>
+                    <input type="date" id="trainingDate" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="trainingStartTime">Start Time</label>
+                        <input type="time" id="trainingStartTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="trainingEndTime">End Time</label>
+                        <input type="time" id="trainingEndTime">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="trainingLocation">Location</label>
+                    <input type="text" id="trainingLocation" maxlength="255" placeholder="e.g. University Football Field">
+                </div>
+
+                <div class="form-group">
+                    <label for="trainingNotes">Notes</label>
+                    <textarea id="trainingNotes" rows="3" placeholder="Optional details"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="secondary-button" id="cancelTraining">Cancel</button>
+                    <button type="submit" class="primary-button" id="saveTrainingButton">Save Training</button>
+                </div>
+
+                <p id="trainingFormMessage" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/training-sessions.js"></script>
+</body>
+</html>

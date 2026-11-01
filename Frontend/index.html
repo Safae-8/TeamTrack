@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TeamTrack | Football Team Manager</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="dashboard">
+
+    <div class="app">
+
+        <!-- ==========================================
+            SIDEBAR
+        =========================================== -->
+
+        <div id="sidebar-container"></div>
+        
+
+        <!-- =========================
+             MAIN AREA
+        ========================== -->
+        <main class="main-content">
+
+            <!-- Top bar -->
+
+            <div id="topbar-container"></div>
+
+            <!-- =========================
+                 PAGE HEADER
+            ========================== -->
+            <section class="page-header">
+
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Good morning! Here's your team overview.</p>
+                </div>
+
+                <div class="slogan">
+                    <span>Better Players</span>
+                    <span>Stronger Team</span>
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 STAT CARDS
+            ========================== -->
+            <section class="stats-grid">
+
+                <!-- Players -->
+                <div class="stat-card blue">
+
+                    <div class="stat-icon">
+                        ♟
+                    </div>
+
+                    <div class="stat-info">
+                        <strong id="dashboardPlayerCount">0</strong>
+                        <span>Players</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Trainings -->
+                <div class="stat-card green">
+
+                    <div class="stat-icon">
+                        ▣
+                    </div>
+
+                    <div class="stat-info">
+                        <strong>12</strong>
+                        <span>Trainings</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Excuses -->
+                <div class="stat-card yellow">
+
+                    <div class="stat-icon">
+                        ⚠
+                    </div>
+
+                    <div class="stat-info">
+                        <strong>2</strong>
+                        <span>Pending Excuses</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Fines -->
+                <div class="stat-card red">
+
+                    <div class="stat-icon">
+                        ¥
+                    </div>
+
+                    <div class="stat-info">
+                        <strong>¥70</strong>
+                        <span>Unpaid Fines</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 MAIN DASHBOARD GRID
+            ========================== -->
+            <section class="dashboard-grid">
+
+
+                <!-- TODAY'S TRAINING -->
+                <div class="card training-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Today's Training</h3>
+
+                            <p>
+                                Sep 23, 2026 · 18:00 · Field A
+                            </p>
+                        </div>
+
+                        <span class="card-icon">▣</span>
+
+                    </div>
+
+                    <button class="attendance-button">
+                        Take Attendance
+                    </button>
+
+                </div>
+
+
+                <!-- MONTHLY ATTENDANCE -->
+                <div class="card attendance-card">
+
+                    <div class="card-header">
+
+                        <h3>Monthly Attendance</h3>
+
+                        <span class="card-icon">◉</span>
+
+                    </div>
+
+
+                    <div class="attendance-content">
+
+                        <!-- Donut -->
+                        <div class="donut-chart">
+
+                            <div class="donut-center">
+                                <strong>18</strong>
+                                <span>Players</span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Legend -->
+                        <div class="attendance-legend">
+
+                            <div>
+                                <span class="legend-dot present"></span>
+                                <span>Present</span>
+                                <strong>72%</strong>
+                            </div>
+
+                            <div>
+                                <span class="legend-dot late"></span>
+                                <span>Late</span>
+                                <strong>11%</strong>
+                            </div>
+
+                            <div>
+                                <span class="legend-dot absent"></span>
+                                <span>Absent</span>
+                                <strong>8%</strong>
+                            </div>
+
+                            <div>
+                                <span class="legend-dot excused"></span>
+                                <span>Excused</span>
+                                <strong>9%</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+                <div class="card quick-actions-card">
+
+                    <div class="card-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+
+
+                    <div class="quick-actions">
+
+                        <a href="attendance.html" class="quick-action blue-action">
+                            <span>✓</span>
+                            Take Attendance
+                        </a>
+
+                        <button
+                            type="button"
+                            class="quick-action purple-action"
+                            id="dashboardAddPlayerButton"
+                        >
+                            <span>♟</span>
+                            Add Player
+                        </button>
+
+                        <a href="training-sessions.html" class="quick-action green-action">
+                            <span>▣</span>
+                            Schedule Training
+                        </a>
+
+                        <button class="quick-action blue-action">
+                            <span>▤</span>
+                            Monthly Report
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT PLAYERS -->
+                <div class="card players-card">
+
+                    <div class="card-header">
+
+                        <h3>Recent Players</h3>
+
+                        <a href="players.html">View All →</a>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>#</th>
+                                    <th>Player</th>
+                                    <th>Position</th>
+                                    <th>Present</th>
+                                    <th>Late</th>
+                                    <th>Fine</th>
+                                    <th>Status</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="dashboardPlayersBody">
+
+                                <tr>
+                                    <td colspan="7" class="table-loading">
+                                        Loading players...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TEAM RULES -->
+                <div class="card rules-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Team Rules</h3>
+                            <p>Current attendance rules</p>
+                        </div>
+
+                        <a href="#">View All →</a>
+
+                    </div>
+
+
+                    <div class="rules-list">
+
+                        <div class="rule">
+
+                            <div class="rule-number">
+                                01
+                            </div>
+
+                            <div>
+                                <strong id="dashboardLateThreshold">Late 3 times</strong>
+                                <span id="dashboardLateDescription">Counts as 1 qualifying absence</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="rule">
+
+                            <div class="rule-number">
+                                02
+                            </div>
+
+                            <div>
+                                <strong id="dashboardAbsenceThreshold">3 qualifying absences</strong>
+                                <span>Player is flagged for review</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="rule">
+
+                            <div class="rule-number">
+                                03
+                            </div>
+
+                            <div>
+                                <strong id="dashboardFineAmount">Late fine</strong>
+                                <span id="dashboardFineDescription">Fine for every late attendance</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MONTHLY STATUS -->
+                <div class="card monthly-status-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Monthly Status</h3>
+                            <p>Team performance for September 2026</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="monthly-stat-grid">
+
+                        <div>
+                            <strong>18</strong>
+                            <span>Total Players</span>
+                        </div>
+
+                        <div>
+                            <strong>12</strong>
+                            <span>Present</span>
+                        </div>
+
+                        <div>
+                            <strong>2</strong>
+                            <span>Late</span>
+                        </div>
+
+                        <div>
+                            <strong>3</strong>
+                            <span>Absences</span>
+                        </div>
+
+                        <div>
+                            <strong>1</strong>
+                            <span>Excused</span>
+                        </div>
+
+                        <div>
+                            <strong>¥70</strong>
+                            <span>Total Fines</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PENDING EXCUSES -->
+                <div class="card excuses-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Pending Excuses</h3>
+                        </div>
+
+                        <a href="#">View All →</a>
+
+                    </div>
+
+
+                    <div class="excuse-list">
+
+                        <div class="excuse-row">
+                            <span>Lina A.</span>
+                            <span>Sep 23</span>
+                            <span>University Exam</span>
+                            <span>View</span>
+                            <b>Pending</b>
+                        </div>
+
+                        <div class="excuse-row">
+                            <span>Aya M.</span>
+                            <span>Sep 19</span>
+                            <span>Illness</span>
+                            <span>View</span>
+                            <b>Pending</b>
+                        </div>
+
+                        <div class="excuse-row">
+                            <span>Nora S.</span>
+                            <span>Sep 16</span>
+                            <span>Family</span>
+                            <span>—</span>
+                            <b>Pending</b>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+    <div class="modal-overlay" id="playerModal">
+
+        <div class="player-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2 id="playerModalTitle">Add Player</h2>
+
+                    <p>
+                        Enter the player's information.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closePlayerModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="playerForm">
+
+                <input
+                    type="hidden"
+                    id="playerId"
+                >
+
+
+                <div class="form-grid">
+
+                    <!-- Full name -->
+
+                    <div class="form-group full-width">
+
+                        <label for="fullName">
+                            Full Name *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="full_name"
+                            placeholder="Enter player's full name"
+                            required
+                        >
+
+                    </div>
+                    <div class="form-group full-width">
+
+                        <label for="jerseyName">
+                            Jersey Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="jerseyName"
+                            name="jersey_name"
+                            placeholder="Enter player's jersey name"
+                        >
+
+                    </div>
+
+
+                    <!-- Student ID -->
+
+                    <div class="form-group">
+
+                        <label for="studentId">
+                            Student ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="studentId"
+                            name="student_id"
+                            placeholder="Optional"
+                        >
+
+                    </div>
+
+
+                    <!-- Phone -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone
+                        </label>
+
+                        <input
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            placeholder="Optional"
+                        >
+
+                    </div>
+
+
+                    <!-- Position -->
+
+                    <div class="form-group">
+
+                        <label for="position">
+                            Position
+                        </label>
+
+                        <select
+                            id="position"
+                            name="position"
+                        >
+
+                            <option value="">
+                                Select position
+                            </option>
+
+                            <option value="Goalkeeper">
+                                Goalkeeper
+                            </option>
+
+                            <option value="Defender">
+                                Defender
+                            </option>
+
+                            <option value="Midfielder">
+                                Midfielder
+                            </option>
+
+                            <option value="Winger">
+                                Winger
+                            </option>
+
+                            <option value="Forward">
+                                Forward
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Jersey number -->
+
+                    <div class="form-group">
+
+                        <label for="jerseyNumber">
+                            Jersey Number
+                        </label>
+
+                        <input
+                            type="number"
+                            id="jerseyNumber"
+                            name="jersey_number"
+                            min="0"
+                            max="99"
+                            placeholder="Optional"
+                        >
+
+                    </div>
+
+
+                    <!-- Join date -->
+
+                    <div class="form-group">
+
+                        <label for="joinDate">
+                            Join Date *
+                        </label>
+
+                        <input
+                            type="date"
+                            id="joinDate"
+                            name="join_date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Status -->
+
+                    <div
+                        class="form-group"
+                        id="statusGroup"
+                    >
+
+                        <label for="playerStatus">
+                            Status
+                        </label>
+
+                        <select
+                            id="playerStatus"
+                            name="status"
+                        >
+
+                            <option value="Active">
+                                Active
+                            </option>
+
+                            <option value="Inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Form message -->
+
+                <div
+                    id="playerFormMessage"
+                    class="form-message"
+                ></div>
+
+
+                <!-- Buttons -->
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelPlayerButton"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Save Player
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

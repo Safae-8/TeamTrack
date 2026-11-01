@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TeamTrack | Settings</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="settings">
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <div id="sidebar-container"></div>
+
+        <!-- Main Area -->
+        <main class="main-content">
+
+            <!-- Shared Topbar -->
+            <div id="topbar-container"></div>
+
+            <!-- Page Header -->
+            <section class="page-header">
+                <div>
+                    <h2>Settings</h2>
+                    <p>Manage your team information and attendance rules.</p>
+                </div>
+            </section>
+
+            <!-- General Settings -->
+            <section class="card settings-card">
+
+                <div class="card-header">
+                    <div>
+                        <h3>General Settings</h3>
+                        <p>Basic information about your team.</p>
+                    </div>
+                </div>
+
+                <form id="generalSettingsForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group full-width">
+                            <label for="teamName">Team Name</label>
+                            <input
+                                type="text"
+                                id="teamName"
+                                name="team_name"
+                                placeholder="Enter your team name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="academicYear">Academic Year</label>
+                            <input
+                                type="text"
+                                id="academicYear"
+                                name="academic_year"
+                                placeholder="2026–2027"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div id="generalSettingsMessage"
+                         class="form-message"
+                         role="status"></div>
+
+                    <div class="modal-actions">
+                        <button type="submit" class="primary-button">
+                            Save General Settings
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+            <!-- Attendance Rules -->
+            <section class="card settings-card">
+
+                <div class="card-header">
+                    <div>
+                        <h3>Attendance Rules</h3>
+                        <p>
+                            These rules will control the relevant calculations
+                            throughout TeamTrack.
+                        </p>
+                    </div>
+                </div>
+
+                <form id="attendanceSettingsForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="lateThreshold">
+                                Late Arrivals per Qualifying Absence
+                            </label>
+                            <input
+                                type="number"
+                                id="lateThreshold"
+                                name="late_threshold"
+                                min="1"
+                                step="1"
+                                required
+                            >
+                            <small>
+                                Number of late arrivals that count as one
+                                additional qualifying absence.
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="finePerLate">
+                                Fine per Late Arrival (RMB ¥)
+                            </label>
+                            <input
+                                type="number"
+                                id="finePerLate"
+                                name="fine_per_late"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="monthlyAbsenceThreshold">
+                                Monthly Absences Requiring Review
+                            </label>
+                            <input
+                                type="number"
+                                id="monthlyAbsenceThreshold"
+                                name="monthly_absence_threshold"
+                                min="1"
+                                step="1"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="settings-notice">
+                        <strong>Important</strong>
+                        <p>
+                            Saved rules must be applied consistently to
+                            attendance calculations, fine generation, and
+                            monthly reports. Existing fine payment records
+                            should be preserved.
+                        </p>
+                    </div>
+
+                    <div id="attendanceSettingsMessage"
+                         class="form-message"
+                         role="status"></div>
+
+                    <div class="modal-actions">
+                        <button type="submit" class="primary-button">
+                            Save Attendance Rules
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/settings.js"></script>
+
+</body>
+</html>

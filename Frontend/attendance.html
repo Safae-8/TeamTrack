@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance | TeamTrack</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="attendance">
+    <div class="app">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <div id="topbar-container"></div>
+
+            <section class="page-header">
+                <div>
+                    <h1>Attendance</h1>
+                    <p>Record and manage attendance for every training session.</p>
+                </div>
+            </section>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <span>Total Players</span>
+                    <strong id="attendanceTotalPlayers">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>Present</span>
+                    <strong id="attendancePresentCount">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>Late</span>
+                    <strong id="attendanceLateCount">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>Absent</span>
+                    <strong id="attendanceAbsentCount">0</strong>
+                </div>
+            </section>
+
+            <section class="content-card">
+                <div class="section-header">
+                    <div>
+                        <h2>Take Attendance</h2>
+                        <p>Select a training session to record your team's attendance.</p>
+                    </div>
+
+                    <select
+                        id="attendanceSessionSelect"
+                        aria-label="Select training session"
+                        required
+                    >
+                        <option value="">Loading training sessions...</option>
+                    </select>
+                </div>
+
+                <div id="attendanceSessionInfo" class="attendance-session-info">
+                    Select a training session to see its details.
+                </div>
+
+                <div class="table-container">
+                    <table class="players-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Player</th>
+                                <th>Position</th>
+                                <th>Status</th>
+                                <th>Arrival Time</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendancePlayersBody">
+                            <tr>
+                                <td colspan="6" class="table-loading">
+                                    Select a training session to load players.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Excuse Request Form -->
+                <div id="attendanceExcusePanel" class="content-card" hidden>
+                    <div class="section-header">
+                        <div>
+                            <h2>Submit Excuse Request</h2>
+                            <p id="excuseSelectedPlayer">Selected player</p>
+                        </div>
+                    </div>
+
+                    <form id="attendanceExcuseForm">
+                        <div class="form-group">
+                            <label for="excuseAttendanceOutcome">Attendance outcome</label>
+                            <select id="excuseAttendanceOutcome" required>
+                                <option value="">Choose an outcome</option>
+                                <option value="Late">Late</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="excuseCategory">Excuse category</label>
+                            <select id="excuseCategory" required>
+                                <option value="">Choose a category</option>
+                                <option value="Medical">Medical</option>
+                                <option value="Family reasons">Family reasons</option>
+                                <option value="Academic commitments">Academic commitments</option>
+                                <option value="Personal reasons">Personal reasons</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="excuseOtherGroup" hidden>
+                            <label for="excuseOtherCategory">Specify the category</label>
+                            <input
+                                type="text"
+                                id="excuseOtherCategory"
+                                maxlength="255"
+                                placeholder="Enter the excuse category"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="excuseExplanation">Explanation</label>
+                            <textarea
+                                id="excuseExplanation"
+                                rows="4"
+                                maxlength="5000"
+                                placeholder="Explain why the player was late or absent..."
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="excuseEvidence">Evidence reference (optional)</label>
+                            <input
+                                type="text"
+                                id="excuseEvidence"
+                                maxlength="500"
+                                placeholder="Optional file name or evidence reference"
+                            >
+                            <small>For now, enter a reference or file name. File uploads will need a separate implementation.</small>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="secondary-button" id="cancelAttendanceExcuse">
+                                Cancel
+                            </button>
+
+                            <button type="submit" class="primary-button" id="saveAttendanceExcuse">
+                                Save Excuse Request
+                            </button>
+                        </div>
+
+                        <p id="attendanceExcuseMessage" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+                <!-- End Excuse Request Form -->
+
+
+                <div class="form-actions">
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="resetAttendanceButton"
+                    >
+                        Reset Changes
+                    </button>
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="saveAttendanceButton"
+                        disabled
+                    >
+                        Save Attendance
+                    </button>
+                </div>
+
+                <p id="attendanceMessage" role="status" aria-live="polite"></p>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/attendance.js"></script>
+</body>
+</html>

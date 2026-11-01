@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Players | TeamTrack</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="players">
+
+<div class="app">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <div id="sidebar-container"></div>
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="main-content">
+
+        <!-- Top bar -->
+
+        <div id="topbar-container"></div>
+
+        <!-- ==========================================
+             PAGE HEADER
+        =========================================== -->
+
+        <section class="page-header">
+
+            <div>
+                <h1>Players</h1>
+
+                <p>
+                    Manage your football team players.
+                </p>
+            </div>
+
+            <div class="slogan">
+                <span>Better Players</span>
+                <span>Stronger Team</span>
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             PLAYERS PAGE
+        =========================================== -->
+
+        <section class="players-page">
+
+            <!-- Header -->
+
+            <div class="players-page-header">
+
+                <div>
+                    <h2>Team Players</h2>
+
+                    <p>
+                        Add, edit and manage your team members.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="openAddPlayerButton"
+                >
+                    <span>+</span>
+                    Add Player
+                </button>
+
+            </div>
+
+
+            <!-- Player statistics -->
+
+            <div class="players-mini-stats">
+
+                <div class="mini-stat-card">
+
+                    <div class="mini-stat-icon">
+                        ♙
+                    </div>
+
+                    <div>
+                        <span>Total Players</span>
+                        <strong id="totalPlayers">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="mini-stat-card">
+
+                    <div class="mini-stat-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>Active Players</span>
+                        <strong id="activePlayers">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="mini-stat-card">
+
+                    <div class="mini-stat-icon">
+                        ○
+                    </div>
+
+                    <div>
+                        <span>Inactive Players</span>
+                        <strong id="inactivePlayers">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Players table -->
+
+            <div class="card players-table-card">
+
+                <div class="players-table-header">
+
+                    <div>
+                        <h3>Players List</h3>
+                        <p>All players registered in TeamTrack.</p>
+                    </div>
+
+                    <div class="players-search">
+
+                        <input
+                            type="text"
+                            id="playerSearch"
+                            placeholder="Search players..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="players-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Player</th>
+                                <th>Student ID</th>
+                                <th>Position</th>
+                                <th>Jersey Number</th>
+                                <th>Jersey Name</th>
+                                <th>Join Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="playersTableBody">
+
+                            <tr>
+                                <td colspan="8" class="table-loading">
+                                    Loading players...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ==========================================
+     ADD / EDIT PLAYER MODAL
+=========================================== -->
+
+<div class="modal-overlay" id="playerModal">
+
+    <div class="player-modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h2 id="playerModalTitle">Add Player</h2>
+
+                <p>
+                    Enter the player's information.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closePlayerModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="playerForm">
+
+            <input
+                type="hidden"
+                id="playerId"
+            >
+
+
+            <div class="form-grid">
+
+                <!-- Full name -->
+
+                <div class="form-group full-width">
+
+                    <label for="fullName">
+                        Full Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="full_name"
+                        placeholder="Enter player's full name"
+                        required
+                    >
+
+                </div>
+                <div class="form-group full-width">
+
+                    <label for="jerseyName">
+                        Jersey Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="jerseyName"
+                        name="jersey_name"
+                        placeholder="Enter player's jersey name"
+                    >
+
+                </div>
+
+
+                <!-- Student ID -->
+
+                <div class="form-group">
+
+                    <label for="studentId">
+                        Student ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentId"
+                        name="student_id"
+                        placeholder="Optional"
+                    >
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone
+                    </label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        name="phone"
+                        placeholder="Optional"
+                    >
+
+                </div>
+
+
+                <!-- Position -->
+
+                <div class="form-group">
+
+                    <label for="position">
+                        Position
+                    </label>
+
+                    <select
+                        id="position"
+                        name="position"
+                    >
+
+                        <option value="">
+                            Select position
+                        </option>
+
+                        <option value="Goalkeeper">
+                            Goalkeeper
+                        </option>
+
+                        <option value="Defender">
+                            Defender
+                        </option>
+
+                        <option value="Midfielder">
+                            Midfielder
+                        </option>
+
+                        <option value="Winger">
+                            Winger
+                        </option>
+
+                        <option value="Forward">
+                            Forward
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Jersey number -->
+
+                <div class="form-group">
+
+                    <label for="jerseyNumber">
+                        Jersey Number
+                    </label>
+
+                    <input
+                        type="number"
+                        id="jerseyNumber"
+                        name="jersey_number"
+                        min="0"
+                        max="99"
+                        placeholder="Optional"
+                    >
+
+                </div>
+
+
+                <!-- Join date -->
+
+                <div class="form-group">
+
+                    <label for="joinDate">
+                        Join Date *
+                    </label>
+
+                    <input
+                        type="date"
+                        id="joinDate"
+                        name="join_date"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Status -->
+
+                <div
+                    class="form-group"
+                    id="statusGroup"
+                >
+
+                    <label for="playerStatus">
+                        Status
+                    </label>
+
+                    <select
+                        id="playerStatus"
+                        name="status"
+                    >
+
+                        <option value="Active">
+                            Active
+                        </option>
+
+                        <option value="Inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- Form message -->
+
+            <div
+                id="playerFormMessage"
+                class="form-message"
+            ></div>
+
+
+            <!-- Buttons -->
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelPlayerButton"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Save Player
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="js/components.js"></script>
+<script src="js/app.js"></script>
+<script src="js/players.js"></script>
+
+</body>
+</html>

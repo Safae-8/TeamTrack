@@ -1,0 +1,2971 @@
+/* =========================================================
+   TEAMTRACK
+   Dark Professional Football Dashboard
+   ========================================================= */
+
+
+/* =========================================================
+   1. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #020b18;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+button,
+select,
+input {
+    font-family: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   2. MAIN APP
+   ========================================================= */
+
+.app {
+    display: flex;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 70% 5%,
+            rgba(0, 91, 170, 0.16),
+            transparent 35%
+        ),
+        #020b18;
+}
+
+
+/* =========================================================
+   3. SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            180deg,
+            #06162a 0%,
+            #031122 55%,
+            #020b18 100%
+        );
+
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+
+    z-index: 100;
+}
+
+
+/* ---------------------------------------------------------
+   Brand
+   --------------------------------------------------------- */
+
+.brand {
+    height: 115px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 20px 20px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.brand-logo {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d7e4f1
+        );
+
+    color: #071a31;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+.brand-text h1 {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.brand-text span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #8ea5bd;
+
+    font-size: 10px;
+    letter-spacing: 0.2px;
+}
+
+
+/* ---------------------------------------------------------
+   Navigation
+   --------------------------------------------------------- */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    padding: 22px 10px;
+}
+
+.nav-item {
+    position: relative;
+
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 0 18px;
+
+    border-radius: 7px;
+
+    color: #a8b9ca;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.nav-item.active {
+    background:
+        linear-gradient(
+            90deg,
+            #ef2739,
+            #ff3446
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 25px rgba(239, 39, 57, 0.18);
+}
+
+.nav-icon {
+    width: 22px;
+
+    display: flex;
+    justify-content: center;
+
+    font-size: 17px;
+
+    color: #c9d8e8;
+}
+
+.nav-item.active .nav-icon {
+    color: #ffffff;
+}
+
+
+/* ---------------------------------------------------------
+   Sidebar profile
+   --------------------------------------------------------- */
+
+.sidebar-profile {
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 20px 18px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.profile-avatar {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #141f35;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-profile strong {
+    display: block;
+
+    font-size: 12px;
+}
+
+.sidebar-profile span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #8195aa;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   4. MAIN CONTENT
+   ========================================================= */
+
+.main-content {
+    position: relative;
+
+    width: calc(100% - 250px);
+
+    margin-left: 250px;
+
+    min-height: 100vh;
+
+    padding: 0 28px 35px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(3, 14, 28, 0.35) 0%,
+            rgba(3, 14, 28, 0.60) 30%,
+            #07111f 65%,
+            #07111f 100%
+        ),
+        url("../images/stadium.jpg");
+        
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+}
+
+
+
+
+
+/* =========================================================
+   6. TOP BAR
+   ========================================================= */
+
+.topbar {
+    height: 86px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* Month selector */
+
+.month-selector {
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 16px;
+
+    border: 1px solid rgba(52, 130, 204, 0.45);
+
+    border-radius: 10px;
+
+    background: rgba(5, 29, 55, 0.8);
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+.month-selector:hover {
+    background: rgba(11, 46, 83, 0.95);
+}
+
+
+/* Top profile */
+
+.top-profile {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.top-avatar {
+    width: 39px;
+    height: 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #693cff,
+            #8b62ff
+        );
+
+    font-weight: 700;
+}
+
+.top-profile strong {
+    display: block;
+
+    font-size: 12px;
+}
+
+.top-profile span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #8399b0;
+
+    font-size: 10px;
+}
+
+.dropdown-arrow {
+    color: #9cafc1 !important;
+
+    font-size: 14px !important;
+
+    margin-left: 4px;
+}
+
+
+/* =========================================================
+   7. PAGE HEADER
+   ========================================================= */
+
+.page-header {
+    min-height: 115px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page-header h2 {
+    font-size: 31px;
+    font-weight: 800;
+
+    letter-spacing: -0.7px;
+}
+
+.page-header p {
+    margin-top: 6px;
+
+    color: #b2c0ce;
+
+    font-size: 14px;
+}
+
+.slogan {
+    align-self: center;
+
+    margin-right: 30px;
+
+    text-align: right;
+
+    transform: rotate(-3deg);
+}
+
+.slogan span {
+    display: block;
+
+    font-family: "Comic Sans MS", cursive;
+
+    font-size: 21px;
+    font-style: italic;
+    font-weight: 700;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.slogan span:last-child {
+    margin-left: 28px;
+
+    color: #e9eef5;
+}
+
+
+/* =========================================================
+   8. STATISTICS
+   ========================================================= */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-bottom: 15px;
+}
+
+.stat-card {
+    min-height: 88px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 14px 18px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(5, 30, 56, 0.96),
+            rgba(3, 19, 37, 0.88)
+        );
+
+    border: 1px solid rgba(61, 126, 179, 0.35);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-card.blue {
+    border-color: rgba(0, 125, 255, 0.55);
+}
+
+.stat-card.green {
+    border-color: rgba(0, 194, 144, 0.45);
+}
+
+.stat-card.yellow {
+    border-color: rgba(255, 194, 48, 0.42);
+}
+
+.stat-card.red {
+    border-color: rgba(242, 51, 75, 0.45);
+}
+
+
+/* Stat icon */
+
+.stat-icon {
+    width: 54px;
+    height: 54px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 24px;
+}
+
+.blue .stat-icon {
+    background: rgba(0, 110, 255, 0.25);
+    color: #1590ff;
+}
+
+.green .stat-icon {
+    background: rgba(0, 190, 145, 0.23);
+    color: #16d5a5;
+}
+
+.yellow .stat-icon {
+    background: rgba(255, 184, 0, 0.22);
+    color: #ffc21e;
+}
+
+.red .stat-icon {
+    background: rgba(240, 38, 63, 0.23);
+    color: #ff4055;
+}
+
+
+/* Stat text */
+
+.stat-info strong {
+    display: block;
+
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.stat-info span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #9cafc0;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   9. DASHBOARD GRID
+   ========================================================= */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(0, 0.85fr)
+        minmax(220px, 0.62fr);
+
+    gap: 14px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   10. GENERAL CARD
+   ========================================================= */
+
+.card {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(6, 30, 55, 0.94),
+            rgba(3, 18, 34, 0.96)
+        );
+
+    border: 1px solid rgba(66, 130, 177, 0.34);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.15);
+
+    padding: 18px;
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(91, 173, 255, 0.35),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   11. CARD HEADER
+   ========================================================= */
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.card-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.card-header p {
+    margin-top: 6px;
+
+    color: #8399ae;
+
+    font-size: 11px;
+}
+
+.card-header a {
+    color: #1592ff;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+}
+
+.card-icon {
+    color: #d8e6f4;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   12. TODAY'S TRAINING
+   ========================================================= */
+
+.training-card {
+    grid-column: span 1;
+
+    min-height: 160px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(5, 32, 61, 0.94),
+            rgba(4, 24, 44, 0.95)
+        );
+}
+
+.attendance-button {
+    width: 100%;
+
+    height: 43px;
+
+    margin-top: 9px;
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #067cff,
+            #1389ff
+        );
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 20px rgba(0, 117, 255, 0.18);
+
+    transition: 0.2s ease;
+}
+
+.attendance-button:hover {
+    filter: brightness(1.12);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   13. ATTENDANCE CARD
+   ========================================================= */
+
+.attendance-card {
+    min-height: 160px;
+}
+
+.attendance-content {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+}
+
+
+/* Donut chart */
+
+.donut-chart {
+    width: 105px;
+    height: 105px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            #08cfa5 0deg 259deg,
+            #ffc226 259deg 299deg,
+            #f52d4a 299deg 328deg,
+            #7345ff 328deg 360deg
+        );
+
+    position: relative;
+}
+
+.donut-chart::before {
+    content: "";
+
+    position: absolute;
+
+    width: 68px;
+    height: 68px;
+
+    border-radius: 50%;
+
+    background: #061b32;
+}
+
+.donut-center {
+    position: relative;
+
+    z-index: 1;
+
+    text-align: center;
+}
+
+.donut-center strong {
+    display: block;
+
+    font-size: 19px;
+}
+
+.donut-center span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #9eafbf;
+
+    font-size: 9px;
+}
+
+
+/* Legend */
+
+.attendance-legend {
+    flex: 1;
+}
+
+.attendance-legend > div {
+    display: grid;
+
+    grid-template-columns:
+        10px 1fr auto;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 9px;
+
+    color: #aebdcc;
+
+    font-size: 10px;
+}
+
+.attendance-legend strong {
+    color: #e8eef5;
+
+    font-size: 10px;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+}
+
+.legend-dot.present {
+    background: #08cfa5;
+}
+
+.legend-dot.late {
+    background: #ffc226;
+}
+
+.legend-dot.absent {
+    background: #f52d4a;
+}
+
+.legend-dot.excused {
+    background: #7345ff;
+}
+
+
+/* =========================================================
+   14. QUICK ACTIONS
+   ========================================================= */
+
+.quick-actions-card {
+    grid-row: span 2;
+}
+
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.quick-action {
+    width: 100%;
+    min-height: 42px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 14px;
+
+    border-radius: 7px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.quick-action:hover {
+    transform: translateX(3px);
+    filter: brightness(1.1);
+}
+
+.quick-action span {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    font-size: 13px;
+}
+
+.blue-action {
+    background:
+        linear-gradient(
+            90deg,
+            #075dcc,
+            #0754bc
+        );
+}
+
+.purple-action {
+    background:
+        linear-gradient(
+            90deg,
+            #4e36c5,
+            #382ab0
+        );
+}
+
+.green-action {
+    background:
+        linear-gradient(
+            90deg,
+            #008f6d,
+            #00795e
+        );
+}
+
+
+/* =========================================================
+   15. PLAYERS TABLE
+   ========================================================= */
+
+.players-card {
+    grid-column: span 2;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 580px;
+}
+
+thead {
+    background: rgba(255, 255, 255, 0.025);
+}
+
+th {
+    padding: 9px 8px;
+
+    color: #748da5;
+
+    text-align: left;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+td {
+    padding: 10px 8px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.055);
+
+    color: #d5e0ea;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.025);
+}
+
+
+/* Status pills */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 52px;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.active-status {
+    background: rgba(0, 211, 145, 0.2);
+    color: #00e39d;
+}
+
+.review-status {
+    background: rgba(255, 190, 25, 0.2);
+    color: #ffc52d;
+}
+
+.warning-status {
+    background: rgba(241, 42, 61, 0.22);
+    color: #ff5062;
+}
+
+
+/* =========================================================
+   16. TEAM RULES
+   ========================================================= */
+
+.rules-card {
+    min-height: 255px;
+}
+
+.rules-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.rule {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 49, 91, 0.72),
+            rgba(4, 31, 56, 0.5)
+        );
+
+    border: 1px solid rgba(40, 118, 190, 0.25);
+}
+
+.rule-number {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #117df0,
+            #0457ba
+        );
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.rule strong {
+    display: block;
+
+    font-size: 11px;
+}
+
+.rule span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #91a7ba;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   17. MONTHLY STATUS
+   ========================================================= */
+
+.monthly-status-card {
+    grid-column: span 2;
+}
+
+.monthly-stat-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 8px;
+}
+
+.monthly-stat-grid > div {
+    min-height: 67px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: rgba(7, 37, 68, 0.7);
+
+    border: 1px solid rgba(54, 121, 181, 0.28);
+
+    text-align: center;
+}
+
+.monthly-stat-grid strong {
+    font-size: 17px;
+}
+
+.monthly-stat-grid span {
+    margin-top: 5px;
+
+    color: #8398ac;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   18. PENDING EXCUSES
+   ========================================================= */
+
+.excuses-card {
+    min-height: 180px;
+}
+
+.excuse-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.excuse-row {
+    display: grid;
+
+    grid-template-columns:
+        0.8fr
+        0.7fr
+        1.5fr
+        0.6fr
+        0.7fr;
+
+    align-items: center;
+
+    gap: 7px;
+
+    min-height: 38px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    color: #b9c9d8;
+
+    font-size: 9px;
+}
+
+.excuse-row:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.excuse-row span:nth-child(4) {
+    color: #1595ff;
+}
+
+.excuse-row b {
+    justify-self: end;
+
+    padding: 4px 7px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 190, 25, 0.18);
+
+    color: #ffc62e;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   19. SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020b18;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #183653;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #24537c;
+}
+
+
+/* =========================================================
+   20. RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 1250px) {
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        width: calc(100% - 220px);
+        margin-left: 220px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+    }
+
+    .quick-actions-card {
+        grid-row: auto;
+    }
+
+    .players-card {
+        grid-column: span 2;
+    }
+
+    .rules-card {
+        grid-column: span 1;
+    }
+
+    .monthly-status-card {
+        grid-column: span 2;
+    }
+
+    .excuses-card {
+        grid-column: span 1;
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 75px;
+    }
+
+    .brand {
+        justify-content: center;
+        padding: 15px 8px;
+    }
+
+    .brand-logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .brand-text,
+    .nav-item > span:not(.nav-icon),
+    .sidebar-profile > div:not(.profile-avatar) {
+        display: none;
+    }
+
+    .nav-item {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .main-content {
+        width: calc(100% - 75px);
+        margin-left: 75px;
+    }
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .slogan {
+        display: none;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .main-content {
+        padding: 0 14px 25px;
+    }
+
+    .top-profile > div:not(.top-avatar),
+    .dropdown-arrow {
+        display: none !important;
+    }
+
+    .page-header {
+        min-height: 90px;
+    }
+
+    .page-header h2 {
+        font-size: 25px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .players-card,
+    .monthly-status-card {
+        grid-column: span 1;
+    }
+
+    .monthly-stat-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .attendance-content {
+        justify-content: center;
+    }
+}
+
+/* =========================================================
+   PLAYERS PAGE
+========================================================= */
+
+/* ---------------------------------------------------------
+   Page Header
+--------------------------------------------------------- */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 0 38px;
+    margin-bottom: 35px;
+}
+
+.page-header h1 {
+    margin: 0 0 6px;
+    color: #ffffff;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.page-header p {
+    margin: 0;
+    color: #a9bfd4;
+    font-size: 17px;
+}
+
+.slogan {
+    text-align: right;
+    padding-top: 3px;
+}
+
+.slogan span {
+    display: block;
+    color: #ffffff;
+    font-size: 28px;
+    line-height: 1.35;
+    font-weight: 800;
+    font-style: italic;
+}
+
+
+/* ---------------------------------------------------------
+   Players Page Container
+--------------------------------------------------------- */
+
+.players-page {
+    width: 100%;
+    padding: 0 38px 50px;
+    box-sizing: border-box;
+}
+
+
+/* ---------------------------------------------------------
+   Players Header
+--------------------------------------------------------- */
+
+.players-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 22px;
+}
+
+.players-page-header h2 {
+    margin: 0 0 5px;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.players-page-header p {
+    margin: 0;
+    color: #a9bfd4;
+    font-size: 15px;
+}
+
+
+/* ---------------------------------------------------------
+   Primary Button
+--------------------------------------------------------- */
+
+.primary-button {
+    border: none;
+    border-radius: 8px;
+    background: #ff3045;
+    color: #ffffff;
+    padding: 11px 18px;
+    min-height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.primary-button:hover {
+    background: #ff4659;
+    transform: translateY(-1px);
+}
+
+.primary-button span {
+    font-size: 18px;
+    line-height: 1;
+}
+
+
+/* ---------------------------------------------------------
+   Players Mini Statistics
+--------------------------------------------------------- */
+
+.players-mini-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.mini-stat-card {
+    min-height: 92px;
+    padding: 18px 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    background: rgba(7, 25, 43, 0.94);
+    border: 1px solid #1d3c56;
+    border-radius: 12px;
+
+    box-sizing: border-box;
+}
+
+.mini-stat-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: #102d47;
+    border-radius: 10px;
+
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.mini-stat-card > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mini-stat-card span {
+    color: #8fa8bf;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.mini-stat-card strong {
+    color: #ffffff;
+    font-size: 25px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+
+/* ---------------------------------------------------------
+   Players Table Card
+--------------------------------------------------------- */
+
+.players-table-card {
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+
+/* ---------------------------------------------------------
+   Players Table Header
+--------------------------------------------------------- */
+
+.players-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    padding: 22px 25px;
+
+    border-bottom: 1px solid #19364f;
+}
+
+.players-table-header h3 {
+    margin: 0 0 4px;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.players-table-header p {
+    margin: 0;
+    color: #8fa8bf;
+    font-size: 14px;
+}
+
+
+/* ---------------------------------------------------------
+   Player Search
+--------------------------------------------------------- */
+
+.players-search {
+    width: 260px;
+    flex-shrink: 0;
+}
+
+.players-search input {
+    width: 100%;
+    height: 40px;
+
+    padding: 0 13px;
+
+    box-sizing: border-box;
+
+    background: #071a2c;
+    border: 1px solid #294861;
+    border-radius: 8px;
+
+    color: #ffffff;
+    font-size: 14px;
+
+    outline: none;
+}
+
+.players-search input::placeholder {
+    color: #71879b;
+}
+
+.players-search input:focus {
+    border-color: #47708f;
+    box-shadow: 0 0 0 3px rgba(71, 112, 143, 0.14);
+}
+
+
+/* ---------------------------------------------------------
+   Table Wrapper
+--------------------------------------------------------- */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+/* ---------------------------------------------------------
+   Players Table
+--------------------------------------------------------- */
+
+.players-table {
+    width: 100%;
+    min-width: 1200px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.players-table thead {
+    background: rgba(10, 31, 50, 0.9);
+}
+
+.players-table th {
+    padding: 13px 16px;
+
+    color: #7f9ab2;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+
+    white-space: nowrap;
+}
+
+.players-table td {
+    padding: 14px 16px;
+
+    color: #dbe7f2;
+
+    font-size: 14px;
+
+    border-top: 1px solid #153149;
+}
+
+.players-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.players-table tbody tr:hover {
+    background: rgba(19, 48, 72, 0.35);
+}
+
+
+/* ---------------------------------------------------------
+   Loading / Empty State
+--------------------------------------------------------- */
+
+.table-loading {
+    text-align: center;
+    padding: 40px 20px !important;
+
+    color: #8fa6bb !important;
+}
+
+
+/* ---------------------------------------------------------
+   Player Name
+--------------------------------------------------------- */
+
+.player-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.player-avatar {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    background: #dce8f5;
+
+    color: #10243a;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.player-name-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.player-name-info strong {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.player-name-info span {
+    color: #71879b;
+    font-size: 12px;
+}
+
+
+/* ---------------------------------------------------------
+   Jersey Number
+--------------------------------------------------------- */
+
+.jersey-number {
+    width: 34px;
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+    border: 1px solid #294962;
+
+    background: #102d47;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* ---------------------------------------------------------
+   Player Status
+--------------------------------------------------------- */
+
+.player-status {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.player-status.active {
+    background: rgba(46, 190, 120, 0.12);
+    color: #54d99a;
+}
+
+.player-status.inactive {
+    background: rgba(150, 160, 175, 0.10);
+    color: #91a0af;
+}
+
+
+/* ---------------------------------------------------------
+   Player Actions
+--------------------------------------------------------- */
+
+.player-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.table-action-button {
+    width: 33px;
+    height: 33px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+    border: 1px solid #294861;
+
+    background: #0b2136;
+    color: #b9cad9;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.table-action-button:hover {
+    background: #163650;
+    color: #ffffff;
+}
+
+.table-action-button.danger:hover {
+    background: rgba(255, 48, 69, 0.12);
+    border-color: #ff3045;
+    color: #ff5969;
+}
+
+
+/* =========================================================
+   ADD / EDIT PLAYER MODAL
+========================================================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(1, 8, 17, 0.78);
+
+    z-index: 9999;
+
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.show,
+.modal-overlay.active {
+    display: flex;
+}
+
+.player-modal {
+    width: min(650px, 100%);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #081b2e;
+
+    border: 1px solid #294963;
+    border-radius: 14px;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+}
+
+
+/* ---------------------------------------------------------
+   Modal Header
+--------------------------------------------------------- */
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid #1b3850;
+}
+
+.modal-header h2 {
+    margin: 0 0 5px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.modal-header p {
+    margin: 0;
+
+    color: #8fa7bb;
+
+    font-size: 13px;
+}
+
+.modal-close {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #102a43;
+    color: #b8c9d9;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background: #183850;
+    color: #ffffff;
+}
+
+
+/* ---------------------------------------------------------
+   Player Form
+--------------------------------------------------------- */
+
+#playerForm {
+    padding: 24px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: #a9bbcc;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    background: #06182a;
+
+    border: 1px solid #294861;
+    border-radius: 8px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: #657d91;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #47708f;
+    box-shadow: 0 0 0 3px rgba(71, 112, 143, 0.14);
+}
+
+
+/* ---------------------------------------------------------
+   Form Message
+--------------------------------------------------------- */
+
+.form-message {
+    display: none;
+
+    margin-top: 15px;
+    padding: 10px 12px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+}
+
+.form-message.show {
+    display: block;
+}
+
+.form-message.error {
+    background: rgba(255, 48, 69, 0.10);
+    border: 1px solid rgba(255, 48, 69, 0.25);
+    color: #ff7482;
+}
+
+
+/* ---------------------------------------------------------
+   Modal Actions
+--------------------------------------------------------- */
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 24px;
+    padding-top: 18px;
+
+    border-top: 1px solid #1b3850;
+}
+
+.secondary-button {
+    min-height: 42px;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+    border: 1px solid #294861;
+
+    background: #10283e;
+    color: #c3d1de;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.secondary-button:hover {
+    background: #173650;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   PLAYERS RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .players-mini-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .players-page-header {
+        align-items: flex-start;
+    }
+
+    .players-table-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .players-search {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .page-header {
+        padding: 0 20px;
+        flex-direction: column;
+    }
+
+    .slogan {
+        text-align: left;
+    }
+
+    .slogan span {
+        font-size: 22px;
+    }
+
+    .players-page {
+        padding: 0 20px 40px;
+    }
+
+    .players-page-header {
+        flex-direction: column;
+    }
+
+    .primary-button {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .page-header h1 {
+        font-size: 34px;
+    }
+
+    .players-page-header h2 {
+        font-size: 24px;
+    }
+
+    .players-table-header {
+        padding: 18px;
+    }
+
+    #playerForm {
+        padding: 18px;
+    }
+
+}
+
+
+/* ==========================================
+   PLAYERS TABLE - COLUMN WIDTHS
+========================================== */
+
+.players-table th:nth-child(1),
+.players-table td:nth-child(1) {
+    width: 23%;
+}
+
+.players-table th:nth-child(2),
+.players-table td:nth-child(2) {
+    width: 13%;
+}
+
+.players-table th:nth-child(3),
+.players-table td:nth-child(3) {
+    width: 13%;
+}
+
+.players-table th:nth-child(4),
+.players-table td:nth-child(4) {
+    width: 10%;
+}
+
+.players-table th:nth-child(5),
+.players-table td:nth-child(5) {
+    width: 11%;
+}
+
+.players-table th:nth-child(6),
+.players-table td:nth-child(6) {
+    width: 10%;
+}
+
+.players-table th:nth-child(7),
+.players-table td:nth-child(7) {
+    width: 8%;
+}
+
+.players-table th:nth-child(8),
+.players-table td:nth-child(8) {
+    width: 12%;
+}
+
+/* ==========================================
+   PLAYER NAME + PHONE
+========================================== */
+
+.player-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.player-name-cell > div:last-child {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 4px;
+}
+
+.player-name-cell strong {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.player-name-cell span {
+    display: block;
+    font-size: 12px;
+    color: #8fa8c2;
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   TABLE CELLS
+========================================== */
+
+.players-table th,
+.players-table td {
+    padding: 14px 20px;
+    text-align: left;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.players-table th + th,
+.players-table td + td {
+    border-left: 1px solid rgba(41, 73, 97, 0.35);
+}
+
+.players-table th {
+    white-space: nowrap;
+}
+
+.players-table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Extra separation between Jersey columns */
+
+.players-table th:nth-child(4),
+.players-table td:nth-child(4) {
+    padding-right: 28px;
+}
+
+.players-table th:nth-child(5),
+.players-table td:nth-child(5) {
+    padding-left: 28px;
+}
+
+
+/* ==========================================
+   JERSEY NUMBER
+========================================== */
+
+.jersey-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 48px;
+    height: 38px;
+
+    padding: 0 10px;
+
+    border-radius: 10px;
+}
+
+
+/* ==========================================
+   ACTIONS
+========================================== */
+
+.player-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.table-action {
+    white-space: nowrap;
+}
+
+/* ==========================================
+   PLAYERS TABLE HEADER SPACING
+========================================== */
+
+.players-table th {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/* ==========================================
+   JERSEY NUMBER / JERSEY NAME SPACING
+========================================== */
+
+.players-table th:nth-child(4) {
+    padding-right: 30px;
+}
+
+.players-table th:nth-child(5) {
+    padding-left: 30px;
+}
+
+/* ================================
+   Month Selector Calendar
+   ================================ */
+
+.month-picker {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 260px;
+    padding: 14px;
+    background: #0b1b2b;
+    border: 1px solid #1d3b55;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+}
+
+.month-picker.show {
+    display: block;
+}
+
+.month-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.month-picker-header strong {
+    color: #dbe7f2;
+    font-size: 14px;
+}
+
+.month-picker-header button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+    background: #132f48;
+    color: #dbe7f2;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.month-picker-header button:hover {
+    background: #1d405e;
+}
+
+.month-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+}
+
+.month-picker-grid button {
+    padding: 9px 4px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #9db3c7;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.month-picker-grid button:hover {
+    background: #173750;
+    color: #ffffff;
+}
+
+.month-picker-grid button.selected {
+    background: #d92d3a;
+    color: #ffffff;
+}
+
+.topbar-actions {
+    position: relative;
+}
+
+/* =========================================
+   ATTENDANCE TABLE — DARK, EYE-FRIENDLY THEME
+   ========================================= */
+
+#attendancePlayersBody,
+#attendancePlayersBody tr,
+#attendancePlayersBody td {
+    background-color: #06182b;
+}
+
+#attendancePlayersBody tr {
+    border-bottom: 1px solid #172c40;
+    transition: background-color 0.2s ease;
+}
+
+#attendancePlayersBody tr:hover {
+    background-color: #0b2035;
+}
+
+#attendancePlayersBody td {
+    color: #e1eaf4;
+    border-color: #172c40;
+    padding: 16px 14px;
+}
+
+#attendancePlayersBody .attendance-player-name {
+    color: #f1f5f9;
+    font-weight: 500;
+}
+
+#attendancePlayersBody small {
+    color: #8fa8c0;
+}
+
+/* Dark status dropdowns and inputs */
+#attendancePlayersBody .attendance-status,
+#attendancePlayersBody .attendance-arrival,
+#attendancePlayersBody .attendance-note {
+    background-color: #0b2035;
+    color: #e1eaf4;
+    border: 1px solid #294158;
+    border-radius: 6px;
+    padding: 9px 10px;
+    font: inherit;
+    font-size: 13px;
+    max-width: 100%;
+}
+
+#attendancePlayersBody .attendance-status {
+    min-width: 125px;
+}
+
+#attendancePlayersBody .attendance-arrival {
+    min-width: 120px;
+}
+
+#attendancePlayersBody .attendance-note {
+    min-width: 130px;
+}
+
+#attendancePlayersBody .attendance-status:focus,
+#attendancePlayersBody .attendance-arrival:focus,
+#attendancePlayersBody .attendance-note:focus {
+    outline: 2px solid #397fc4;
+    outline-offset: 1px;
+}
+
+#attendancePlayersBody .attendance-arrival:disabled {
+    background-color: #091626;
+    color: #718096;
+    border-color: #1b2b3b;
+    cursor: not-allowed;
+}
+
+/* Keep the table header dark */
+#attendancePlayersBody {
+    background-color: #06182b;
+}
+
+/* Dark training-session selector */
+#attendanceSessionSelect {
+    background-color: #0b2035;
+    color: #e1eaf4;
+    border: 1px solid #294158;
+    border-radius: 6px;
+    padding: 10px 12px;
+    max-width: 100%;
+}
+
+#attendanceSessionSelect option,
+#attendancePlayersBody .attendance-status option {
+    background-color: #06182b;
+    color: #e1eaf4;
+}
+
+
+/* =========================================
+   ATTENDANCE TABLE — LAYOUT AND SCROLLING
+   ========================================= */
+
+/* Allow the table to scroll horizontally instead of
+   extending beyond the content area. */
+.content-card:has(#attendancePlayersBody) {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.content-card:has(#attendancePlayersBody) .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.content-card:has(#attendancePlayersBody) .table-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Give the table enough room for its columns.
+   The container scrolls on narrower screens. */
+.content-card:has(#attendancePlayersBody) .players-table {
+    width: 100%;
+    min-width: 1000px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+/* Column widths */
+.content-card:has(#attendancePlayersBody) .players-table th:nth-child(1),
+.content-card:has(#attendancePlayersBody) .players-table td:nth-child(1) {
+    width: 50px;
+}
+
+.content-card:has(#attendancePlayersBody) .players-table th:nth-child(2),
+.content-card:has(#attendancePlayersBody) .players-table td:nth-child(2) {
+    width: 220px;
+}
+
+.content-card:has(#attendancePlayersBody) .players-table th:nth-child(3),
+.content-card:has(#attendancePlayersBody) .players-table td:nth-child(3) {
+    width: 145px;
+}
+
+.content-card:has(#attendancePlayersBody) .players-table th:nth-child(4),
+.content-card:has(#attendancePlayersBody) .players-table td:nth-child(4) {
+    width: 155px;
+}
+
+.content-card:has(#attendancePlayersBody) .players-table th:nth-child(5),
+.content-card:has(#attendancePlayersBody) .players-table td:nth-child(5) {
+    width: 150px;
+}
+
+.content-card:has(#attendancePlayersBody) .players-table th:nth-child(6),
+.content-card:has(#attendancePlayersBody) .players-table td:nth-child(6) {
+    width: 220px;
+}
+
+/* Keep headings readable and prevent them from wrapping awkwardly. */
+.content-card:has(#attendancePlayersBody) .players-table th {
+    white-space: nowrap;
+    padding: 14px;
+    background-color: #0b2035;
+    color: #8fa8c0;
+}
+
+/* Prevent long names and notes from stretching the table. */
+.content-card:has(#attendancePlayersBody) .players-table td {
+    overflow-wrap: anywhere;
+    vertical-align: middle;
+}
+
+/* Keep the form controls inside their assigned columns. */
+#attendancePlayersBody .attendance-status,
+#attendancePlayersBody .attendance-arrival,
+#attendancePlayersBody .attendance-note {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Give the session selector room without forcing the page wider. */
+#attendanceSessionSelect {
+    width: min(100%, 420px);
+}
+
+/* Make the bottom action buttons wrap on smaller screens. */
+.content-card:has(#attendancePlayersBody) .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* Smaller screens */
+@media (max-width: 768px) {
+    .content-card:has(#attendancePlayersBody) {
+        padding: 16px;
+    }
+
+    .content-card:has(#attendancePlayersBody) .section-header {
+        align-items: stretch;
+    }
+
+    #attendanceSessionSelect {
+        width: 100%;
+    }
+
+    .content-card:has(#attendancePlayersBody) .players-table {
+        min-width: 1000px;
+    }
+}
+
+
+/* Attendance page spacing improvements */
+
+.content-card:has(#attendancePlayersBody) .section-header {
+    margin-bottom: 16px;
+    align-items: flex-start;
+}
+
+.content-card:has(#attendancePlayersBody) .section-header > div {
+    flex: 1 1 300px;
+    min-width: 0;
+}
+
+#attendanceSessionInfo {
+    display: block;
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    background: #0b2035;
+    border: 1px solid #1b344b;
+    border-radius: 8px;
+    color: #b8cce0;
+    line-height: 1.5;
+}
+
+.content-card:has(#attendancePlayersBody) .table-container {
+    margin-top: 0;
+}
+
+.content-card:has(#attendancePlayersBody) .players-table {
+    margin-top: 0;
+}
+
+.content-card:has(#attendancePlayersBody) .players-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* Improve the selector size and alignment */
+#attendanceSessionSelect {
+    flex: 0 1 420px;
+    min-width: 250px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    #attendanceSessionSelect {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    #attendanceSessionInfo {
+        overflow-wrap: anywhere;
+    }
+}
+
+/* ===== Excuses Table Layout Fix ===== */
+
+.excuses-page,
+.excuses-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.excuses-table-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+.excuses-table-container table {
+    width: 100%;
+    min-width: 1250px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.excuses-table-container th,
+.excuses-table-container td {
+    padding: 14px 12px;
+    vertical-align: top;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+/* Player */
+.excuses-table-container th:nth-child(1),
+.excuses-table-container td:nth-child(1) {
+    width: 190px;
+}
+
+/* Training date */
+.excuses-table-container th:nth-child(2),
+.excuses-table-container td:nth-child(2) {
+    width: 145px;
+}
+
+/* Reason */
+.excuses-table-container th:nth-child(3),
+.excuses-table-container td:nth-child(3) {
+    width: 150px;
+}
+
+/* Explanation */
+.excuses-table-container th:nth-child(4),
+.excuses-table-container td:nth-child(4) {
+    width: 220px;
+    overflow-wrap: anywhere;
+}
+
+/* Evidence */
+.excuses-table-container th:nth-child(5),
+.excuses-table-container td:nth-child(5) {
+    width: 140px;
+}
+
+/* Status */
+.excuses-table-container th:nth-child(6),
+.excuses-table-container td:nth-child(6) {
+    width: 120px;
+}
+
+/* Actions */
+.excuses-table-container th:nth-child(7),
+.excuses-table-container td:nth-child(7) {
+    width: 285px;
+}
+
+.excuses-table-container .excuse-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.excuses-table-container .excuse-actions button {
+    white-space: nowrap;
+    flex: 0 0 auto;
+}
+
+@media (max-width: 768px) {
+    .excuses-table-container table {
+        min-width: 1250px;
+    }
+}
+
+
+/* ===== Excuses Table Dark Background ===== */
+
+.excuses-table-container table {
+    background-color: #111827;
+}
+
+.excuses-table-container thead th {
+    background-color: #1f2937;
+}
+
+.excuses-table-container tbody td {
+    background-color: #111827;
+}
+
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: inherit;
+    display: block;
+}
+
+
+/* ===== Monthly Report Table Layout ===== */
+
+body[data-page="monthly-report"] .main-content {
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+body[data-page="monthly-report"] .table-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+body[data-page="monthly-report"] .players-table {
+    width: 100%;
+    min-width: 1050px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+/* Compact row number */
+body[data-page="monthly-report"] .players-table th:nth-child(1),
+body[data-page="monthly-report"] .players-table td:nth-child(1) {
+    width: 45px;
+}
+
+/* Player name */
+body[data-page="monthly-report"] .players-table th:nth-child(2),
+body[data-page="monthly-report"] .players-table td:nth-child(2) {
+    width: 180px;
+}
+
+/* Numeric attendance columns */
+body[data-page="monthly-report"] .players-table th:nth-child(n+3),
+body[data-page="monthly-report"] .players-table td:nth-child(n+3) {
+    width: 115px;
+    text-align: center;
+    padding: 12px 6px;
+}
+
+body[data-page="monthly-report"] .players-table th {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+}
+
+body[data-page="monthly-report"] .players-table td {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+    body[data-page="monthly-report"] .players-table {
+        min-width: 1050px;
+    }
+}
+
+
+/* =========================================
+   TEAMTRACK SETTINGS PAGE
+========================================= */
+
+body[data-page="settings"] .settings-card {
+    margin-bottom: 24px;
+}
+
+body[data-page="settings"] .settings-card .card-header {
+    margin-bottom: 22px;
+}
+
+body[data-page="settings"] .settings-card .card-header h3 {
+    margin-bottom: 6px;
+}
+
+body[data-page="settings"] .settings-card .card-header p {
+    margin: 0;
+    color: #9ca3af;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+body[data-page="settings"] .settings-card .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+body[data-page="settings"] .settings-card .form-group {
+    min-width: 0;
+}
+
+body[data-page="settings"] .settings-card .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+body[data-page="settings"] .settings-card .form-group label {
+    display: block;
+    margin-bottom: 9px;
+    font-weight: 600;
+}
+
+body[data-page="settings"] .settings-card .form-group input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+body[data-page="settings"] .settings-card .form-group small {
+    display: block;
+    margin-top: 8px;
+    color: #9ca3af;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+body[data-page="settings"] .settings-notice {
+    margin-top: 24px;
+    padding: 16px;
+    border-left: 3px solid #dc3545;
+    border-radius: 6px;
+    background: rgba(220, 53, 69, 0.08);
+}
+
+body[data-page="settings"] .settings-notice strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+body[data-page="settings"] .settings-notice p {
+    margin: 0;
+    color: #b8c0cc;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+body[data-page="settings"] .settings-card .modal-actions {
+    margin-top: 22px;
+}
+
+@media (max-width: 768px) {
+    body[data-page="settings"] .settings-card .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    body[data-page="settings"] .settings-card .form-group.full-width {
+        grid-column: auto;
+    }
+}
+

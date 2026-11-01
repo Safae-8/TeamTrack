@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fines | TeamTrack</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="fines">
+    <div class="app">
+
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+
+            <div id="topbar-container"></div>
+
+            <section class="page-header">
+                <div>
+                    <h1>Fines</h1>
+                    <p>Track late-arrival fines for the selected month.</p>
+                </div>
+            </section>
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+                    <span>Total Late Arrivals</span>
+                    <strong id="finesTotalLate">0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span>Total Fines</span>
+                    <strong id="finesTotalAmount">¥0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span>Players with Fines</span>
+                    <strong id="finesPlayersCount">0</strong>
+                </div>
+
+            </section>
+
+            <section class="content-card">
+
+                <div class="section-header">
+                    <button type="button" class="btn btn-primary" id="generateFinesButton">
+                        Generate Fines
+                    </button>
+
+                    <div>
+                        <h2>Player Fine Summary</h2>
+                        <p>Each recorded late arrival incurs a ¥10 fine.</p>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="players-table">
+
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Player</th>
+                                <th>Late Arrivals</th>
+                                <th>Fine per Late</th>
+                                <th>Total Fine</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="finesTableBody">
+                            <tr>
+                                <td colspan="6" class="table-loading">
+                                    Fines have not been loaded yet.
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <p id="finesMessage" role="status" aria-live="polite"></p>
+
+            </section>
+
+        </main>
+    </div>
+
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/fines.js"></script>
+</body>
+</html>
